@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
             return HttpResp.fail("密码错误，请重新输入密码");
         }
         TokenModel tokenModel = redisToken.create(userEntity.getId());
-        objectMap.put("token",tokenModel.getToken());
+        objectMap.put("access_token",tokenModel.getToken());
         userEntity.setPassword(StringUtils.EMPTY);
         objectMap.put("userInfo",userEntity);
         return HttpResp.createBySuccess("登录成功",objectMap);
